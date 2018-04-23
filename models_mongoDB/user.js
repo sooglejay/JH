@@ -4,6 +4,7 @@ var url = "mongodb://localhost:27017/runoob";
 MongoClient.connect(url,function (err,db) {
     if(err) throw err;
     console.log("数据库连接！");
+    console.log(db);
     var dbase = db.db("runoob");
     dbase.createCollection('user',function (err,res) {
        if(err) throw err;
