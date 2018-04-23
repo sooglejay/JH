@@ -6,3 +6,4 @@ MongoClient.connect(url,function (err,db) {
    console.log("数据库连接!");
    db.close();
 });
+s
