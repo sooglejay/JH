@@ -14,6 +14,19 @@ const url = 'mongodb://localhost:27017';
 
 const dbName = 'myproject';
 
+/*
+身份认证机制
+ */
+var f  = require("util").format;
+/*
+模拟数据：MongoDB用户jiangli，密码：123456 身份认证机制为DEFAULT
+ */
+const user = encodeURIComponent('jiangli');
+const password = encodeURIComponent('123456');
+const authMechanism = 'DEFAULT';
+
+const url = f('mongodb://localhost:27017',user,password,authMechanism);
+
 MongoClient.connect(url,function (err,client) {
     assert.equal(null,err);
     console.log("Connected successfully to server");
