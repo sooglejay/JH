@@ -44,3 +44,7 @@ const insertDocuments = function (err,callback) {
         });
 }
 
+const finDocuments = function (db,callback) {
+    const collection = db.collection("documents");
+    collection.find({}).toArray(function (mongoError,docum) {  })
+};
