@@ -43,8 +43,31 @@ const insertDocuments = function (err,callback) {
             callback(result);
         });
 }
-
+/**
+ * 查找集合内所有文档
+ * @param db
+ * @param callback
+ */
 const finDocuments = function (db,callback) {
     const collection = db.collection("documents");
-    collection.find({}).toArray(function (mongoError,docum) {  })
-};
+    collection.find({}).toArray(function (mongoError,documents) {
+        assert.equal(mongoError,null);
+        console.log("Found the following records");
+        console.log(documents);
+        callback(documents)
+    });
+}
+/**
+ * 更新一个文档
+ * @param db
+ * @param callback
+ */
+const updateDocument = function(db,callback){
+    const collection = db.collection('document');
+    collection.updateOne({a:2},{$set:{b:1}},function (err,result) {
+        assert.equal(err,null);
+        assert.equal(1,result.result.n);
+        console.log("Updated the document with the field a equal to 2");
+        callback(result);
+    })
+}
