@@ -69,5 +69,46 @@ const updateDocument = function(db,callback){
         assert.equal(1,result.result.n);
         console.log("Updated the document with the field a equal to 2");
         callback(result);
-    })
+    });
 }
+/**
+ * 更新多个文档
+ * @param db
+ * @param callback
+ */
+const updateManyDocument = function (db,callback) {
+    const collection = db.collection('document');
+    collection.updateMany({a :"查询器"},{$set:{b:"设置器"}},function (err,result) {
+        assert.equal(err,null);
+        console.log("更新全部附和条件的");
+        callback(result);
+    });
+}
+/**
+ * 删除文档
+ * @param db
+ * @param callback
+ */
+const removeDocument = function (db,callback) {
+    const collection = db.collection('document');
+    collection.deleteOne({a:3},function (err,result) {
+        assert.equal(err.null)
+        assert.equal(1,result.result.n);
+        console.log("Removed the document with the field a equal to 3");
+        callback(result);
+    });
+}
+/**
+ * 索引一个集合
+ * @param db
+ * @param callback
+ */
+const indexCollection = function (db,callback) {
+    db.collection('document').createIndex({"a":1},null,function (mongoError,resule) {
+        console.log(resule);
+        callback();
+    })
+};
+
+
+module.exports = MongoClient;
