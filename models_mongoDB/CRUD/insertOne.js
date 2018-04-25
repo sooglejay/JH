@@ -14,9 +14,28 @@ MongoClinet.connect(url,function (err,client) {
         assert.equal(1,result.insertedCount);
         client.close();
     });
+    //插入多条文档
     db.collection('inserts').insertMany([{a:2},{a:3}],function (err,result) {
         assert.equal(null,err);
         assert.equal(2,result.insertedCount);
         client.close();
     })
 });
+
+/**
+ * 序列号文档中的函数
+ * @param db
+ * @param callback
+ */
+function serializeFunction(db,callback) {
+    db.collection('users').insertOne({
+        a:1,
+        b:function () {
+            return 'hello'
+        }
+    },{w:'majority',wtimeout:10000,serializeFunctions:true},function (mongoError,resule) {
+        assert.equal(null,mongoError);
+        assert.equal(1,resule.insertedCount);
+        callback(resule);
+    })
+}
