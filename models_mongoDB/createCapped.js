@@ -13,7 +13,9 @@ MongoClient.connect(url,function (err,client) {
 
     const db = client.db("col");
     createCapped(db,function(){
-        client.close();
+        createValidated(db,function () {
+            client.close();
+        });
     });
     
 });
