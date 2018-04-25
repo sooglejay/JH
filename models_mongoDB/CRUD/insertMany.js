@@ -28,3 +28,6 @@ MongoClient.connect(url,function (err,client) {
         client.close()
     })
 })
+//执行此方法后上述操作将文档插入到user集合中，数据模型如下所示：
+// { "_id" : ObjectId("57d6f6...d7bd7a"), "a" : NumberLong(1787) }
+// { "_id" : ObjectId("57d6f6...d7bd7b"), "b" : NumberDecimal("27.8892836") }
