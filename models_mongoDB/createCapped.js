@@ -52,3 +52,4 @@ function createValidated(db,callback) {
         callback();
     })
 }
+
