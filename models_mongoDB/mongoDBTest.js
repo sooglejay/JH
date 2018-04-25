@@ -21,6 +21,9 @@ var f  = require("util").format;
 /*
 模拟数据：MongoDB用户jiangli，密码：123456 身份认证机制为DEFAULT
  */
+//连接字符串指定的用户dave密码abc123，身份认证机制为MONGODB-CR和身份验证数据库myporjectdb。
+//如果您已将身份验证模式从位置升级MONGODB-CR到SCRAM-SHA-1，则MONGODB-CR身份验证将无法进行身份验证
+// const url = 'mongodb://dave:abc123@localhost:27017/?authMechanism=MONGODB-CR&authSource=myprojectdb';
 const user = encodeURIComponent('jiangli');
 const password = encodeURIComponent('123456');
 const authMechanism = 'DEFAULT';
@@ -124,4 +127,5 @@ const indexCollection = function (db,callback) {
 };
 
 
-module.exports = MongoClient;
+
+// module.exports = MongoClient;
