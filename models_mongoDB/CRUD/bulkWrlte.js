@@ -17,6 +17,7 @@ MongoClient.connect(url,function (err,client) {
     ],{ordered:true,w:1},function (bulkWriteError,result) {
         assert.equal(null,bulkWriteError);
         assert.equal(1,result.insertedCount);
-        assert.equal(2,r)
+        // assert.equal(1,result.result.n)
     })
 })
+
