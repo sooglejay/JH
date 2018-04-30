@@ -1,12 +1,12 @@
-const mongoose = require("mongoose");
-mongoose.connect('mongodb://localhost/user');
-const db = mongoose.connection;
-
-db.on("error",console.error.bind(console,'connection error'));
-
-db.once("open",function(){
-    console.log("hello")
-});
+// const mongoose = require("mongoose");
+// mongoose.connect('mongodb://localhost/user');
+// const db = mongoose.connection;
+//
+// db.on("error",console.error.bind(console,'connection error'));
+//
+// db.once("open",function(){
+//     console.log("hello")
+// });
 
 // var mongoose = require('mongoose');
 // mongoose.connect('mongodb://localhost/user');
@@ -58,16 +58,16 @@ db.once("open",function(){
 // const col = mongoose.model('col',schema);
 //
 // const doc = new col({name:"jiangli"});
-var ObjectId = mongoose.Schema.Types.ObjectId;
-var Car = new Schema({ driver: ObjectId });
-
-var numberSchema = new Schema({
-    integerOnly:{
-        type:Number,
-        get:v => Math.round(v),
-    set:v => Math.round(v),
-    alias:'i'
-}
-});
-
-console.log(numberSchema)
+// var ObjectId = mongoose.Schema.Types.ObjectId;
+// var Car = new Schema({ driver: ObjectId });
+//
+// var numberSchema = new Schema({
+//     integerOnly:{
+//         type:Number,
+//         get:v => Math.round(v),
+//     set:v => Math.round(v),
+//     alias:'i'
+// }
+// });
+//
+// console.log(numberSchema)
