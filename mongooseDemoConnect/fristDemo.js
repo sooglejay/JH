@@ -53,9 +53,21 @@ db.once("open",function(){
 //     console.log(kittens);
 // });
 
-const schema = mongoose.Schema({name:String});
+// const schema = mongoose.Schema({name:String});
+//
+// const col = mongoose.model('col',schema);
+//
+// const doc = new col({name:"jiangli"});
+var ObjectId = mongoose.Schema.Types.ObjectId;
+var Car = new Schema({ driver: ObjectId });
 
-const col = mongoose.model('col',schema);
+var numberSchema = new Schema({
+    integerOnly:{
+        type:Number,
+        get:v => Math.round(v),
+    set:v => Math.round(v),
+    alias:'i'
+}
+});
 
-const doc = new col({name:"jiangli"});
-console.log(doc.name)
+console.log(numberSchema)
