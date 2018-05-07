@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const jhBolg = new mongoose.Schema({
-    _id:Number,
+    id:Number,
     title:String,
     subtitle:String,
     body:String,

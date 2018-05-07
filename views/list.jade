@@ -11,6 +11,10 @@ block content
                         .col-md-7
                             input.form-control#blogTitle(type="text" name="blog[title]"  placeholder="文章标题")
                     .form-group
+                        label.col-md-3.control-label(for="blog_id") _id号
+                        .col-md-7
+                            input.form-control#blog_id(type="number"  min = "1" max="1000" name="blog[id]" )
+                    .form-group
                         label.col-md-3.control-label(for="blogSubtitle") 副标题
                         .col-md-7
                             input.form-control#blogSubtitle(type="text" name="blog[subtitle]"  placeholder="文章副标题")

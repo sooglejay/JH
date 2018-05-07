@@ -20,13 +20,13 @@ router.get('/blog/:id',function(req,res){
     var id = req.params.id;
     JH.findById(id,function(err,result) {
         asser.equal(null,err);
-        res.render('detail',{title:"详情页",blog:{_id:id,title:"hahah",body:"zheshadijsdjsjda",subtitle:"sadasdsa"}})
+        res.render('detail',{title:"详情页",blog:result})
     })
 
 });
 
 router.post('/admin/blog/new',function(req,res) {
-   var id = req.body.blog._id;
+   var id = req.body.blog.id;
    var blogObj =req.body.blog;
    var _blog;
    if(id !== 'undefined') {
@@ -41,7 +41,7 @@ router.post('/admin/blog/new',function(req,res) {
    }
    else{
        _blog = new JH({
-           _id:blogObj._id,
+           _id:blogObj.id,
            title:blogObj.title,
            subtitle:blogObj.subtitle,
            body:blogObj.body
@@ -52,8 +52,8 @@ router.post('/admin/blog/new',function(req,res) {
    }
 });
 
-router.get('/blog/list',function (req,res) {
-    res.render('list',{bolg:{title:"JH",doc:"这是test文本"}})
+router.get('/list',function (req,res) {
+    res.render('list')
 });
 
 //后台管理页
