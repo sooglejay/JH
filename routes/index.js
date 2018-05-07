@@ -20,7 +20,7 @@ router.get('/blog/:id',function(req,res){
     var id = req.params.id;
     JH.findById(id,function(err,result) {
         asser.equal(null,err);
-        res.render('detail',{title:"详情页",blog:result})
+        res.render('detail',{title:"详情页",blog:{_id:id,title:"hahah",body:"zheshadijsdjsjda",subtitle:"sadasdsa"}})
     })
 
 });
@@ -41,12 +41,13 @@ router.post('/admin/blog/new',function(req,res) {
    }
    else{
        _blog = new JH({
+           _id:blogObj._id,
            title:blogObj.title,
            subtitle:blogObj.subtitle,
-           body:blogObj.body,
+           body:blogObj.body
        });
-       _blog.save(function(err,movie){
-          res.redirect('/blog/'+movie._id);
+       _blog.save(function(err,blog){
+          res.redirect('/blog/'+blog._id);
        })
    }
 });
