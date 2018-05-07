@@ -32,7 +32,7 @@ router.post('/admin/blog/new',function(req,res) {
    if(id !== 'undefined') {
        JH.findById(id,function (err,result) {
            asser.equal(null,err);
-           _blog =_.extend(result,movieObj);
+           _blog =_.extend(result,blogObj);
            _blog.save(function(err,result) {
                asser.equal(null,err);
                res.redirect('/blog'+result._id)
