@@ -25,32 +25,41 @@ router.get('/blog/:id',function(req,res){
 
 });
 
-router.post('/admin/blog/new',function(req,res) {
-   var id = req.body.blog.id;
-   var blogObj =req.body.blog;
+router.post('/blog',function(req,res) {
+   // var id = req.body.blog.id;
+   // var blogObj =JSON.parse(req.body);
+   // var b = JSON.parse(blogObj);
    var _blog;
-   if(id !== 'undefined') {
-       JH.findById(id,function (err,result) {
-           asser.equal(null,err);
-           _blog =_.extend(result,blogObj);
-           _blog.save(function(err,result) {
-               asser.equal(null,err);
-               res.redirect('/blog'+result._id)
-           })
-       })
-   }
-   else{
-       _blog = new JH({
-           _id:blogObj.id,
-           title:blogObj.title,
-           subtitle:blogObj.subtitle,
-           body:blogObj.body
-       });
-       _blog.save(function(err,blog){
-          res.redirect('/blog/'+blog._id);
-       })
-   }
+   // if(id !== 'undefined') {
+   //     JH.findById(id,function (err,result) {
+   //         asser.equal(null,err);
+   //         _blog =_.extend(result,blogObj);
+   //         _blog.save(function(err,result) {
+   //             asser.equal(null,err);
+   //             res.redirect('/blog'+1)
+   //         })
+   //     })
+   // }
+   // else{
+   //     _blog = new JH({
+   //         // _id:blogObj.id,
+   //         title:blogObj.title,
+   //         subtitle:blogObj.subtitle,
+   //         body:blogObj.body
+   //     });
+   //     _blog.save(function(err,blog){
+   //        res.redirect('/blog/'+1);
+   //     });
+   // }
+    console.log(req.body);
+    // console.log(blogObj.title);
+    // console.log(blogObj.subtitle);
+    // console.log(blogObj);
+    // console.log(b.title);
+    res.render('b',{blog:res.json(req.body)});
 });
+
+
 
 router.get('/list',function (req,res) {
     res.render('list')

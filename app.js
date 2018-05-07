@@ -6,10 +6,7 @@ var logger = require('morgan');
 
 // 连接数据库
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/bolg');
-
-
-
+mongoose.connect('mongodb://localhost/haha');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
