@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 
 const jhBolg = new mongoose.Schema({
+    _id:Number,
     title:String,
-    doc:String,
+    subtitle:String,
+    body:String,
     meta:{
         createAt:{
             type:Date,
@@ -30,12 +32,12 @@ jhBolg.statics = {
         return this.find({}).sort('meta.updateAt').exec(cb);
     },
     findById:function(id,cb){
-        return this.findOne({}).exec(cb);
+        return this.findOne({_id:id}).exec(cb);
     }
 };
 
-const jhbolg = mongoose.model('jhBolg',jhBolg);
+const jh = mongoose.model('jh',jhBolg);
 
-module.exports = jhbolg;
+module.exports = jh;
 
 

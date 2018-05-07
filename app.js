@@ -4,14 +4,20 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-//连接数据库
+// 连接数据库
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/bolg');
+
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+//使用moment 这是一个js的库 包含了一些jQuery未实现的函数
+app.locals.moment = require('moment');
+
 //set locals
 // app.locals.title= "JH";
 // app.locals.email="jiangli450324@163.com";

@@ -1,3 +1,34 @@
 extends layout
 block content
-    h1 #{title}
+    .container
+       .row
+           .col-md-12
+               .panel.panel-success
+                   .panel-heading 后台管理
+                   .panel-body
+                       table.table.table-responsive
+                           thead
+                            th 文章标题
+                            th 创建时间
+                            th 更新时间
+                            th 作者
+                            th 查看
+                            th 更新
+                            th 删除
+                           tbody
+                            each blog in b
+                                tr(class="item-id-#{blog._id}")
+                                    td #{blog.title}
+                                    //-td #{moment(blog.createBlog).format('YYYY-MM-DD HH:mm')}
+                                    //-td #{moment(blog.updataBlog).format('YYYY-MM-DD HH:mm')}
+                                    td #{blog.blogThou}
+                                    td
+                                        button.btn.btn-default
+                                            a(target="_back" href="../movie/#{blog._id}") 查看
+                                    td
+                                        button.btn.btn-default
+                                         a(target="_back" href="../movie/update/#{blog._id}") 更新
+                                    td
+                                        button.btn.btn-danger(type="button" data-id="#{blog._id}") 删除
+
+

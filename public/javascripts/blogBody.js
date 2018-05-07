@@ -1,0 +1,1 @@
+$("#blogBody").val(blog.body);

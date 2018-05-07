@@ -1,10 +1,27 @@
 extends layout
 
 block content
-    h1= bolg.title
-    p= bolg.doc
-    .container
-        .row
-            .col-md-6
-                p sdasdadaaaaaa
-                button.btn.btn-danger 这是按钮
+    .container-fluid
+        .clearfix
+            nav
+                ul.nav.nav-pills.pull-right
+                    li.active(role="presentation")
+                        a(href="#") Home
+                    li(role="presentation")
+                        a(href="#") About
+                    li(role="presentation")
+                        a(href="#") Contact
+
+        .jumbotron    .jumbotron
+                h1 最新文章
+                p.lead 这是JH第一篇文章，欢迎订阅
+                p.lead 这是JH第一篇文章，欢迎订阅
+                p.lead 这是JH第一篇文章，欢迎订阅
+                p.lead 这是JH第一篇文章，欢迎订阅
+                p.lead 这是JH第一篇文章，欢迎订阅
+                p.lead 这是JH第一篇文章，欢迎订阅
+
+
+        .col-md-6
+            .jumbotron
+                h1 右侧
