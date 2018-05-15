@@ -16,50 +16,47 @@ router.get('/', function(req, res, next) {
   });
 
 });
-router.get('/blog/:id',function(req,res){
+router.get('/blog',function(req,res){
     var id = req.params.id;
     JH.findById(id,function(err,result) {
         asser.equal(null,err);
-        res.render('detail',{title:"详情页",blog:result})
+        res.render('b',{title:"详情页",blog:result})
     })
 
 });
 
-router.post('/blog',function(req,res) {
+router.post('/admin/blog/new',function(req,res) {
    // var id = req.body.blog.id;
-   // var blogObj =JSON.parse(req.body);
-   // var b = JSON.parse(blogObj);
+   var blogObj =req.body.blog;
+
    var _blog;
-   // if(id !== 'undefined') {
-   //     JH.findById(id,function (err,result) {
-   //         asser.equal(null,err);
-   //         _blog =_.extend(result,blogObj);
-   //         _blog.save(function(err,result) {
-   //             asser.equal(null,err);
-   //             res.redirect('/blog'+1)
-   //         })
-   //     })
-   // }
-   // else{
-   //     _blog = new JH({
-   //         // _id:blogObj.id,
-   //         title:blogObj.title,
-   //         subtitle:blogObj.subtitle,
-   //         body:blogObj.body
-   //     });
-   //     _blog.save(function(err,blog){
-   //        res.redirect('/blog/'+1);
-   //     });
-   // }
+   if(id !== 'undefined') {
+       JH.findById(id,function (err,result) {
+           asser.equal(null,err);
+           _blog =_.extend(result,blogObj);
+           _blog.save(function(err,result) {
+               asser.equal(null,err);
+               res.redirect('/blog'+1)
+           })
+       })
+   }
+   else{
+       _blog = new JH({
+           // _id:blogObj.id,
+           title:blogObj.title,
+           subtitle:blogObj.subtitle,
+           body:blogObj.body
+       });
+       _blog.save(function(err,blog){
+          res.redirect('/blog');
+       });
+   }
     console.log(req.body);
-    // console.log(blogObj.title);
-    // console.log(blogObj.subtitle);
-    // console.log(blogObj);
-    // console.log(b.title);
-    res.render('b',{blog:res.json(req.body)});
+    console.log(blogObj.title);
+    console.log(blogObj.subtitle);
+    console.log(blogObj);
+    console.log(blogObj);
 });
-
-
 
 router.get('/list',function (req,res) {
     res.render('list')
