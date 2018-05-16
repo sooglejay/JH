@@ -1,0 +1,30 @@
+extends ../layout
+block content
+    .container
+        .row
+            .col-md-12
+                h1 #{title}
+            .col-md-8
+                .panel.panel-default
+                    .panel.panel-heading 编辑文章
+                        .panel-body
+                        form.form-horizontal(method="post" action="list/new")
+                                .form-group
+                                    label.col-md-3.control-label(for="name") 姓名
+                                    .col-md-6
+                                      input.form-control#name(type="text" name="content"  placeholder="姓名")
+                                .form-group
+                                    label.col-md-3.control-label(for="age") 年龄
+                                    .col-md-6
+                                        input.form-control#age(type="text" name="age" placeholder="年龄")
+                                .form-group
+                                    label.col-md-3.control-label(for="sex") 性别
+                                    .col-md-6
+                                        input.form-control#sex(type="text" name="sex" placeholder="性别")
+                                .form-group
+                                    label.col-md-3.control-label(for="str") 班级1
+                                    .col-md-6
+                                        input.form-control#str(type="text" name="str" placeholder="班级")
+                                .form-group
+                                    .col-md-offset-9.col-md-3
+                                        button.btn.btn-success(type="submit") 提交

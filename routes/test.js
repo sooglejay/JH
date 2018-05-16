@@ -1,28 +1,27 @@
 var express = require('express');
 var router = express.Router();
-const mongoclient = require('mongodb').MongoClient;
-const url = "mongodb://localhost:27017";
-const dbname = "johnny";
 
-mongoclient.connect(url,function (err,client) {
-    const db = client(dbname);
+
+
+router.get('/list',function(req,res) {
+
+        res.render('test/admin',{title:"hello world"})
+},function (req,res) {
+    console.log('多个回调')
 });
 
-router.get('/list/:id',function (req,res) {
-    const id = req.params.id;
-
-    db.find({'id'},function () {
-
-    });
- res.render('test/test',{title:"list页"})
-});
 
 router.post('/list/new',function(req,res) {
-   res.direction('/admin');
+    console.log(req.body);
+     var content = req.body;
+     console.log(content.content);
+     db.insert(content);
+
 });
 
-router.get('/admin',function(req,res) {
-    res.render('/test/admin',{title:"admin页"})
-});
+// router.get('/admin',function(req,res) {
+//
+//     res.render('test/admin',{title:"小陈"})
+// });
 
 module.exports = router;

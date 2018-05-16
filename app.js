@@ -5,8 +5,15 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 // 连接数据库
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/haha');
+// var mongoose = require('mongoose');
+// mongoose.connect('mongodb://localhost/haha');
+
+const mongoclient = require('mongodb').MongoClient;
+const url = "mongodb://localhost:27017/johnny";
+const dbname = "johnny";
+
+
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var testRouter = require('./routes/test');
@@ -20,7 +27,11 @@ app.locals.moment = require('moment');
 // app.locals.title= "JH";
 // app.locals.email="jiangli450324@163.com";
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+
+mongoclient.connect(url,function (err,client) {
+    var db = client.db(dbname);
+    console.log(db)
+    app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use(logger('dev'));
@@ -49,5 +60,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+});
 module.exports = app;
